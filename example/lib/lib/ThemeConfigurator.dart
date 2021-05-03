@@ -26,23 +26,24 @@ class ThemeConfigurator extends StatelessWidget {
 
   void _changeColor(BuildContext context) {
     showDialog(
-      useRootNavigator: false,
-      context: context,
-      child: AlertDialog(
-        title: const Text('Update Theme'),
-        content: SingleChildScrollView(
-          child: _ThemeConfiguratorDialog(contextContainingTheme: context),
-        ),
-        actions: <Widget>[
-          NeumorphicButton(
-            child: const Text('Close'),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-        ],
-      ),
-    );
+        useRootNavigator: false,
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Update Theme'),
+            content: SingleChildScrollView(
+              child: _ThemeConfiguratorDialog(contextContainingTheme: context),
+            ),
+            actions: <Widget>[
+              NeumorphicButton(
+                child: const Text('Close'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        });
   }
 }
 

@@ -6,50 +6,71 @@ class NeumorphicApp extends StatelessWidget {
   final ThemeMode themeMode;
   final NeumorphicThemeData theme;
   final NeumorphicThemeData darkTheme;
-  final NeumorphicThemeData materialDarkTheme;
-  final NeumorphicThemeData materialTheme;
-  final String initialRoute;
-  final Color color;
-  final Iterable<LocalizationsDelegate<dynamic>> localizationsDelegates;
-  final Locale locale;
-  final Widget home;
+  final ThemeData? materialDarkTheme;
+  final ThemeData? materialTheme;
+  final String? initialRoute;
+  final Color? color;
+  final Iterable<LocalizationsDelegate<dynamic>>? localizationsDelegates;
+  final Locale? locale;
+  final Widget? home;
   final Iterable<Locale> supportedLocales;
   final Map<String, WidgetBuilder> routes;
-  final RouteFactory onGenerateRoute;
-  final RouteFactory onUnknownRoute;
-  final GenerateAppTitle onGenerateTitle;
-  final GlobalKey<NavigatorState> navigatorKey;
+  final RouteFactory? onGenerateRoute;
+  final RouteFactory? onUnknownRoute;
+  final GenerateAppTitle? onGenerateTitle;
+  final GlobalKey<NavigatorState>? navigatorKey;
   final List<NavigatorObserver> navigatorObservers;
-  final InitialRouteListFactory onGenerateInitialRoutes;
+  final InitialRouteListFactory? onGenerateInitialRoutes;
   final bool debugShowCheckedModeBanner;
-  final Function(BuildContext, Widget) builder;
-  final Function(Locale, Iterable<Locale>) localeResolutionCallback;
+  final Widget Function(BuildContext, Widget?)? builder;
+  final Locale? Function(Locale?, Iterable<Locale>)? localeResolutionCallback;
+  final ThemeData? highContrastTheme;
+  final ThemeData? highContrastDarkTheme;
+  final LocaleListResolutionCallback? localeListResolutionCallback;
+  final bool showPerformanceOverlay;
+  final bool checkerboardRasterCacheImages;
+  final bool checkerboardOffscreenLayers;
+  final bool showSemanticsDebugger;
+  final Map<LogicalKeySet, Intent>? shortcuts;
+  final Map<Type, Action<Intent>>? actions;
 
-  const NeumorphicApp(
-      {Key key,
-      this.title = '',
-      this.color,
-      this.initialRoute,
-      this.routes = const {},
-      this.home,
-      this.debugShowCheckedModeBanner = true,
-      this.navigatorKey,
-      this.navigatorObservers = const [],
-      this.onGenerateRoute,
-      this.onGenerateTitle,
-      this.onGenerateInitialRoutes,
-      this.onUnknownRoute,
-      this.theme = neumorphicDefaultTheme,
-      this.darkTheme = neumorphicDefaultDarkTheme,
-      this.locale,
-      this.localizationsDelegates,
-      this.supportedLocales = const <Locale>[Locale('en', 'US')],
-      this.themeMode = ThemeMode.system,
-      this.materialDarkTheme,
-      this.materialTheme,
-      this.builder,
-      this.localeResolutionCallback})
-      : super(key: key);
+  final bool debugShowMaterialGrid;
+
+  const NeumorphicApp({
+    Key? key,
+    this.title = '',
+    this.color,
+    this.initialRoute,
+    this.routes = const {},
+    this.home,
+    this.debugShowCheckedModeBanner = true,
+    this.navigatorKey,
+    this.navigatorObservers = const [],
+    this.onGenerateRoute,
+    this.onGenerateTitle,
+    this.onGenerateInitialRoutes,
+    this.onUnknownRoute,
+    this.theme = neumorphicDefaultTheme,
+    this.darkTheme = neumorphicDefaultDarkTheme,
+    this.locale,
+    this.localizationsDelegates,
+    this.supportedLocales = const <Locale>[Locale('en', 'US')],
+    this.themeMode = ThemeMode.system,
+    this.materialDarkTheme,
+    this.materialTheme,
+    this.builder,
+    this.localeResolutionCallback,
+    this.highContrastTheme,
+    this.highContrastDarkTheme,
+    this.localeListResolutionCallback,
+    this.showPerformanceOverlay = false,
+    this.checkerboardRasterCacheImages = false,
+    this.checkerboardOffscreenLayers = false,
+    this.showSemanticsDebugger = false,
+    this.debugShowMaterialGrid = false,
+    this.shortcuts,
+    this.actions,
+  }) : super(key: key);
 
   ThemeData _getMaterialTheme(NeumorphicThemeData theme) {
     final color = theme.accentColor;
@@ -109,7 +130,17 @@ class NeumorphicApp extends StatelessWidget {
               navigatorObservers: navigatorObservers,
               debugShowCheckedModeBanner: debugShowCheckedModeBanner,
               builder: builder,
-              localeResolutionCallback: localeResolutionCallback),
+              localeResolutionCallback: localeResolutionCallback,
+              highContrastTheme: highContrastTheme,
+              highContrastDarkTheme: highContrastDarkTheme,
+              localeListResolutionCallback: localeListResolutionCallback,
+              showPerformanceOverlay: showPerformanceOverlay,
+              checkerboardRasterCacheImages: checkerboardRasterCacheImages,
+              checkerboardOffscreenLayers: checkerboardOffscreenLayers,
+              showSemanticsDebugger: showSemanticsDebugger,
+              shortcuts: shortcuts,
+              actions: actions,
+              debugShowMaterialGrid: debugShowMaterialGrid),
         ),
       ),
     );
