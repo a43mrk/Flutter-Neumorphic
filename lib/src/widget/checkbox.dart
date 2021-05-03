@@ -128,6 +128,8 @@ class NeumorphicCheckbox extends StatelessWidget {
   final Duration duration;
   final Curve curve;
 
+  final Clip clipBehavior;
+
   NeumorphicCheckbox({
     this.style = const NeumorphicCheckboxStyle(),
     @required this.value,
@@ -137,6 +139,7 @@ class NeumorphicCheckbox extends StatelessWidget {
     this.padding = const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
     this.margin = const EdgeInsets.all(0),
     this.isEnabled = true,
+    this.clipBehavior = Clip.antiAlias,
   });
 
   bool get isSelected => this.value;
@@ -179,6 +182,7 @@ class NeumorphicCheckbox extends StatelessWidget {
     }
 
     return NeumorphicButton(
+      clipBehavior: this.clipBehavior,
       padding: this.padding,
       pressed: isSelected,
       margin: this.margin,

@@ -163,6 +163,7 @@ class NeumorphicRadio<T> extends StatelessWidget {
 
   final Duration duration;
   final Curve curve;
+  final Clip clipBehavior;
 
   NeumorphicRadio({
     this.child,
@@ -174,6 +175,7 @@ class NeumorphicRadio<T> extends StatelessWidget {
     this.groupValue,
     this.onChanged,
     this.isEnabled = true,
+    this.clipBehavior = Clip.antiAlias,
   });
 
   bool get isSelected => this.value != null && this.value == this.groupValue;
@@ -213,6 +215,7 @@ class NeumorphicRadio<T> extends StatelessWidget {
         _onClick();
       },
       duration: this.duration,
+      clipBehavior: this.clipBehavior,
       curve: this.curve,
       padding: this.padding,
       pressed: isSelected,

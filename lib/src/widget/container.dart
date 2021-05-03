@@ -50,6 +50,7 @@ class Neumorphic extends StatelessWidget {
 
   final Widget child;
 
+  final Clip clipBehavior;
   final NeumorphicStyle style;
   final TextStyle textStyle;
   final EdgeInsets padding;
@@ -69,6 +70,7 @@ class Neumorphic extends StatelessWidget {
     this.margin = const EdgeInsets.all(0),
     this.padding = const EdgeInsets.all(0),
     this.drawSurfaceAboveChild = true,
+    this.clipBehavior = Clip.antiAlias,
   }) : super(key: key);
 
   @override
@@ -87,6 +89,7 @@ class Neumorphic extends StatelessWidget {
       curve: this.curve,
       margin: this.margin,
       child: this.child,
+      clipBehavior: this.clipBehavior,
     );
   }
 }
@@ -100,6 +103,7 @@ class _NeumorphicContainer extends StatelessWidget {
   final Curve curve;
   final bool drawSurfaceAboveChild;
   final EdgeInsets padding;
+  final Clip clipBehavior;
 
   _NeumorphicContainer({
     Key key,
@@ -111,6 +115,7 @@ class _NeumorphicContainer extends StatelessWidget {
     @required this.style,
     @required this.textStyle,
     @required this.drawSurfaceAboveChild,
+    this.clipBehavior = Clip.antiAlias,
   }) : super(key: key);
 
   @override
@@ -123,6 +128,7 @@ class _NeumorphicContainer extends StatelessWidget {
         curve: this.curve,
         child: NeumorphicBoxShapeClipper(
           shape: this.style.boxShape,
+          clipBehavior: this.clipBehavior,
           child: Padding(
             padding: this.padding,
             child: this.child,

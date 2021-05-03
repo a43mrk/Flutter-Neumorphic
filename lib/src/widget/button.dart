@@ -59,6 +59,7 @@ class NeumorphicButton extends StatefulWidget {
   final bool drawSurfaceAboveChild;
   final bool provideHapticFeedback;
   final String tooltip;
+  final Clip clipBehavior;
 
   NeumorphicButton({
     Key key,
@@ -75,6 +76,7 @@ class NeumorphicButton extends StatefulWidget {
     this.minDistance = 0,
     this.style,
     this.provideHapticFeedback = true,
+    this.clipBehavior = Clip.antiAlias,
   }) : super(key: key);
 
   bool get isEnabled => onPressed != null;
@@ -210,6 +212,7 @@ class _NeumorphicButtonState extends State<NeumorphicButton> {
           style: initialStyle.copyWith(
             depth: _getDepth(),
           ),
+          clipBehavior: widget.clipBehavior,
           child: widget.child,
         ),
       ),
