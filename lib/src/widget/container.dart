@@ -59,6 +59,7 @@ class Neumorphic extends StatelessWidget {
   final Duration duration;
   final bool
       drawSurfaceAboveChild; //if true => boxDecoration & foreground decoration, else => boxDecoration does all the work
+  final Clip clipBehavior;
 
   Neumorphic({
     Key? key,
@@ -131,6 +132,7 @@ class _NeumorphicContainer extends StatelessWidget {
         child: NeumorphicBoxShapeClipper(
           clipBehavior: this.clipBehavior,
           shape: shape,
+          clipBehavior: this.clipBehavior,
           child: Padding(
             padding: this.padding,
             child: this.child,
