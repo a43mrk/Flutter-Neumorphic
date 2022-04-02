@@ -194,10 +194,10 @@ class NeumorphicSwitch extends StatelessWidget {
   }
 
   double get _thumbDepth {
-    if (!this.isEnabled) {
+    if (!this.isEnabled || this.style.thumbDepth != null) {
       return 0;
     } else
-      return this.style.thumbDepth ?? neumorphicDefaultTheme.depth;
+      return this.style.thumbDepth!;
   }
 
   NeumorphicShape get _getThumbShape {
