@@ -4,16 +4,13 @@ import '../../neumorphic_box_shape.dart';
 
 class NeumorphicBoxShapeClipper extends StatelessWidget {
   final NeumorphicBoxShape shape;
+  final Widget? child;
   final Clip clipBehavior;
-  final Widget child;
 
-  NeumorphicBoxShapeClipper({
-      this.clipBehavior = Clip.antiAlias,
-      this.shape,
-      this.child
-    });
+  NeumorphicBoxShapeClipper(
+      {required this.shape, this.child, this.clipBehavior = Clip.antiAlias});
 
-  CustomClipper _getClipper(NeumorphicBoxShape shape) {
+  CustomClipper<Path>? _getClipper(NeumorphicBoxShape shape) {
     return shape.customShapePathProvider;
   }
 
