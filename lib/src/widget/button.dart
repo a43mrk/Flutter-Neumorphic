@@ -59,7 +59,6 @@ class NeumorphicButton extends StatefulWidget {
   final bool provideHapticFeedback;
   final Clip clipBehavior;
   final String? tooltip;
-  final Clip clipBehavior;
 
   NeumorphicButton({
     Key? key,
