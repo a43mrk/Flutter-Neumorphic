@@ -53,6 +53,7 @@ class Neumorphic extends StatelessWidget {
   final Clip clipBehavior;
   final NeumorphicStyle? style;
   final TextStyle? textStyle;
+  final Clip clipBehavior;
   final EdgeInsets padding;
   final EdgeInsets margin;
   final Curve curve;
@@ -131,6 +132,7 @@ class _NeumorphicContainer extends StatelessWidget {
         child: NeumorphicBoxShapeClipper(
           clipBehavior: this.clipBehavior,
           shape: shape,
+          clipBehavior: this.clipBehavior,
           child: Padding(
             padding: this.padding,
             child: this.child,
